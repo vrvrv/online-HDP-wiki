@@ -67,6 +67,7 @@ def parse_args():
                     help="scaling parameter for learning rate [1.0]")
   
   (options, args) = parser.parse_args()
+
   return options 
 
 def run_online_hdp():

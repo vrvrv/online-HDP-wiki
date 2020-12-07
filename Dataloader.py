@@ -3,6 +3,7 @@ import threading, urllib, re, sys
 import urllib.request
 import urllib.error
 import os
+import argparse
 
 def vocab_list(path):
     data = []
@@ -160,12 +161,19 @@ def parse_doc_list(docs, vocab):
 
 vocab = vocab_list(os.getcwd()+'/data/dictnostops.txt')
 
-if __name__ == '__main__':
-    num_of_doc_each_split = 20
-    num_of_split = 5
-    num = 1
+parser = argparse.ArgumentParser(description='data prepare')
+parser.add_argument('--doc', type=int, default = 5)
+parser.add_argument('--spl', type=int, default = 20)
 
-    # 아래의 코드는 논문의 Fig 2 참고바람.
+args = parser.parse_args()
+
+
+if __name__ == '__main__':
+    num_of_doc_each_split = args.doc
+    num_of_split = args.spl
+
+
+    num = 1
     seen_doc = []
 
     for it in range(1, 1+num_of_split):

@@ -1,5 +1,4 @@
 # jupyter notebook
-.ipynb_checkpoints
+.pyc
+/result/.ipynb_checkpoints
 
-# pycache
-/oHDP/__pycache__

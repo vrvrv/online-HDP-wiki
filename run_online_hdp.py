@@ -11,11 +11,11 @@ np = onlinehdp.np
 
 def parse_args():
   parser = OptionParser()
-  parser.set_defaults(T=300, K=20, D=40, W=7703, eta=0.01, alpha=1.0, gamma=1.0,
+  parser.set_defaults(T=300, K=20, D=600, W=7703, eta=0.01, alpha=1.0, gamma=1.0,
                       kappa=0.5, tau=1.0, batchsize=15, max_time=-1,
                       max_iter=500, var_converge=0.0001, random_seed=999931111, 
                       corpus_name=None, data_path='/data', test_data_path=None, 
-                      test_data_path_in_folds=None, directory=None, save_lag=500, pass_ratio=0.5,
+                      test_data_path_in_folds=None, directory='result', save_lag=500, pass_ratio=0.5,
                       new_init=False, scale=1.0)
 
   parser.add_option("--T", type="int", dest="T", 

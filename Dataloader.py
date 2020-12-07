@@ -161,19 +161,20 @@ def parse_doc_list(docs, vocab):
 vocab = vocab_list('dictnostops.txt')
 
 if __name__ == '__main__':
-    num_of_doc_each_split = 100
-    num_of_split = 20
+    num_of_doc_each_split = 20
+    num_of_split = 10
     num = 1
 
     # 아래의 코드는 논문의 Fig 2 참고바람.
     seen_doc = []
 
-    for it in range(num_of_split):
+    for it in range(1, 1+num_of_split):
         
         # Fetch data from wikipedia in random
         DocSet, Title = fetch_wiki(num_of_doc_each_split)
         DocSet = parse_doc_list(DocSet, vocab)
         for doc, title in zip(DocSet, Title):
+            title = title.replace('/', "")
             if title in seen_doc :
                 continue
             try : 

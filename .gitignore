@@ -1,0 +1,5 @@
+# jupyter notebook
+.ipynb_checkpoints
+
+# pycache
+/oHDP/__pycache__

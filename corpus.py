@@ -82,21 +82,22 @@ def read_data(folder):
 
     for file in os.listdir(os.getcwd()+'/data/'+folder):
         with open(os.getcwd()+'/data/'+folder + '/'+file, 'ru') as f:
-            doc = cPickle.load(f)
-            d = document()
-            counter = Counter(doc)
-            wordids = list(counter.keys())
-            wordcts = [counter[w] for w in wordids]
-            d.words = wordids
-            d.counts = wordcts
-            d.total = sum(d.counts)
-            d.length = len(d.words)
-            c.docs.append(d)
+            if file[-3:]=='pkl':
+                doc = cPickle.load(f)
+                d = document()
+                counter = Counter(doc)
+                wordids = list(counter.keys())
+                wordcts = [counter[w] for w in wordids]
+                d.words = wordids
+                d.counts = wordcts
+                d.total = sum(d.counts)
+                d.length = len(d.words)
+                c.docs.append(d)
 
-            if d.length > 0:
-                max_word = max(d.words)
-                if max_word >= c.size_vocab:
-                    c.size_vocab = max_word + 1
+                if d.length > 0:
+                    max_word = max(d.words)
+                    if max_word >= c.size_vocab:
+                        c.size_vocab = max_word + 1
 
     c.num_docs = len(c.docs)
     return c

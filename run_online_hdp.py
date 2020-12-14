@@ -11,11 +11,11 @@ np = onlinehdp.np
 
 def parse_args():
   parser = OptionParser()
-  parser.set_defaults(T=300, K=20, D=600, W=7703, eta=0.01, alpha=1.0, gamma=1.0,
-                      kappa=0.5, tau=1.0, batchsize=15, max_time=-1,
-                      max_iter=500, var_converge=0.0001, random_seed=999931111, 
-                      corpus_name=None, data_path='/data', test_data_path=None, 
-                      test_data_path_in_folds=None, directory='result', save_lag=500, pass_ratio=0.5,
+  parser.set_defaults(T=300, K=20, D=1500, W=7703, eta=0.01, alpha=1.0, gamma=1.0,
+                      kappa=0.5, tau=1.0, batchsize=30, max_time=5000,
+                      max_iter=2000, var_converge=0.0001, random_seed=999931111, 
+                      corpus_name=None, data_path='/data', test_data_path='test', 
+                      test_data_path_in_folds=None, directory='result', save_lag=200, pass_ratio=0.5,
                       new_init=False, scale=1.0)
 
   parser.add_option("--T", type="int", dest="T", 
@@ -55,8 +55,6 @@ def parse_args():
   parser.add_option("--test_data_path_in_folds", type="string",
                     dest="test_data_path_in_folds",
                     help="testing data prefix for different folds [None], not used anymore")
-  parser.add_option("--directory", type="string", dest="directory",
-                    help="output directory [None]")
   parser.add_option("--save_lag", type="int", dest="save_lag",
                     help="the minimal saving lag, increasing as save_lag * 2^i, with max i as 10; default 500.")
   parser.add_option("--pass_ratio", type="float", dest="pass_ratio",

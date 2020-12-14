@@ -172,6 +172,7 @@ if __name__ == '__main__':
     num_of_doc_each_split = args.doc
     num_of_split = args.spl
 
+    num_of_test = 30
 
     num = 1
     seen_doc = []
@@ -195,4 +196,21 @@ if __name__ == '__main__':
             num += 1
             seen_doc.append(title)
 
+
+    # Fetch data from wikipedia in random
+    DocSet, Title = fetch_wiki(num_of_test)
+    DocSet = parse_doc_list(DocSet, vocab)
+    for doc, title in zip(DocSet, Title):
+        title = title.replace('/', "")
+        if title in seen_doc :
+            continue
+        try : 
+            with open(f'./data/test/'+title+'.pkl', 'wb') as f:
+                pickle.dump(doc, f, protocol = 2)
+        except FileNotFoundError :
+            os.makedirs('./data/test/dat'+str(it), exist_ok = True)
+            with open(f'./data/test/'+title+'.pkl', 'wb') as f:
+                pickle.dump(doc, f, protocol = 2)
+        num += 1
+        seen_doc.append(title)
 
